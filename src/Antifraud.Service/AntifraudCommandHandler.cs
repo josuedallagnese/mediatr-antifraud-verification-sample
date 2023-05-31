@@ -41,7 +41,7 @@ namespace Antifraud.Service
             {
                 var operation = await _antifraudRepository.StartAntifraudOperationAsync(request.Command);
 
-                return AntifraudCommandResult<TResult>.Verify(operation);
+                return AntifraudCommandResult<TResult>.ForceFaceId(operation);
             }
 
             var response = await _mediator.Send(request.Command, cancellationToken);

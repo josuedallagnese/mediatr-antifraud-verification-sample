@@ -7,7 +7,7 @@ namespace Antifraud.Service.Services
     {
         public Task<bool> Check(IAntifraudCommand antifraudCommand)
         {
-            if (antifraudCommand.Amount >= 10)
+            if (antifraudCommand.Amount > 10)
                 return Task.FromResult(true);
 
             return Task.FromResult(false);

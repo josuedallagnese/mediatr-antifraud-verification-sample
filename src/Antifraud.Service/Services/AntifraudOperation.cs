@@ -6,7 +6,7 @@ namespace Antifraud.Service.Services
     {
         public Guid Id { get; set; }
         public DateTime Date { get; set; }
-        public bool ExecuteBiometrics { get; set; }
+        public bool Verified { get; set; }
         public string OperationData { get; set; }
     }
 }

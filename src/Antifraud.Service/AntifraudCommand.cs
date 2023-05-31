@@ -7,8 +7,8 @@ namespace Antifraud.Service
     public class AntifraudCommand<TCommand, TResult> : IRequest<AntifraudCommandResult<TResult>>
         where TCommand : IRequest<TResult>
     {
-        public Guid? OperationId { get; set; }
-        public TCommand Command { get; set; }
+        public Guid? OperationId { get; private set; }
+        public TCommand Command { get; private set; }
 
         private AntifraudCommand() { }
 

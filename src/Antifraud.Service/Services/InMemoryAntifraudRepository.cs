@@ -13,6 +13,8 @@ namespace Antifraud.Service.Services
         {
             var antifraudOperation = _operations[operationId];
 
+            antifraudOperation.Verified = true;
+
             return Task.FromResult(antifraudOperation);
         }
 
@@ -22,6 +24,7 @@ namespace Antifraud.Service.Services
             {
                 Id = Guid.NewGuid(),
                 Date = DateTime.Now,
+                Verified = false,
                 OperationData = JsonSerializer.Serialize(antifraudCommand)
             };
 

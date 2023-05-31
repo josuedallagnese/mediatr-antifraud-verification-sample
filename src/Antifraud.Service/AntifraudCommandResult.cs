@@ -6,9 +6,9 @@ namespace Antifraud.Service
 {
     public class AntifraudCommandResult<TResult>
     {
-        public bool? Check { get; set; }
-        public Guid? OperationId { get; set; }
-        public TResult Result { get; set; }
+        public bool? FaceId { get; private set; }
+        public Guid? OperationId { get; private set; }
+        public TResult Result { get; private set; }
 
         private AntifraudCommandResult() { }
 
@@ -21,11 +21,11 @@ namespace Antifraud.Service
             };
         }
 
-        public static AntifraudCommandResult<TResult> Verify(AntifraudOperation operation)
+        public static AntifraudCommandResult<TResult> ForceFaceId(AntifraudOperation operation)
         {
             return new AntifraudCommandResult<TResult>()
             {
-                Check = true,
+                FaceId = true,
                 OperationId = operation.Id,
             };
         }
@@ -45,8 +45,8 @@ namespace Antifraud.Service
             sb.AppendLine($"[Antifraud Result]");
             sb.AppendLine($"    OperationId={OperationId}");
 
-            if (Check.HasValue)
-                sb.AppendLine($"    Check={Check}");
+            if (FaceId.HasValue)
+                sb.AppendLine($"    FaceId={ForceFaceId}");
 
             if (Result != null)
                 sb.AppendLine($"    {Result.ToString()}");
